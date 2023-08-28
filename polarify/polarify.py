@@ -15,7 +15,7 @@ def polarify() -> None:
 
 
 def polarify_file(path: str) -> None:
-    with open(path) as f:
+    with open(path, "r+") as f:
         contents = f.read()
 
     if "<!-- POLAR" not in contents:
@@ -80,8 +80,9 @@ def polarify_file(path: str) -> None:
         else:
             print(f"Invalid Polar comment, unexpected type in: {comment}")
 
-    print(contents)
-
+    # Write result 
+    with open(path, "w") as f:
+        f.write(contents)
 
 def render_start_tag(args: dict[str, str]) -> str:
     p: list[str] = []
