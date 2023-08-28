@@ -57,8 +57,8 @@ def polarify_file(path: str) -> None:
                 org=args["org"],
                 repo=args["repo"],
                 limit=int(args["limit"]) if "limit" in args else 5,
-                sort_by=args["sort_by"]
-                if "sort_by" in args
+                sort=args["sort"]
+                if "sort" in args
                 else "funding_goal_desc_and_most_positive_reactions",
             )
 
@@ -96,10 +96,12 @@ def render_start_tag(args: dict[str, str]) -> str:
     return " ".join(p)
 
 
-def polar_issues(org: str, repo: str | None, limit: int, sort_by: str) -> str:
+def polar_issues(org: str, repo: str | None, limit: int, sort: str) -> str:
     params = {"platform": "github", "organization_name": org}
     if repo:
         params["repository_name"] = repo
+    if repo:
+        params["sort"] = sort
 
     contents = urllib.request.urlopen(
         f"https://api.polar.sh/api/v1/issues/search?{urllib.parse.urlencode(params)}"

@@ -1,10 +1,15 @@
-name: Client
+name: Polarify
  
+# Example action of how to use the polarsource/actions/polarify action and auto-commiting the results to the repository.
+
 on:
+  # Run after every push
   push:
     branches: ["main"]
-#   pull_request:
-    # types: [opened, synchronize]
+
+  # Daily at 07:00  
+  schedule:
+    - cron: "0 7 * * *"
  
 jobs:
   polarify:

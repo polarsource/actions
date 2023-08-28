@@ -1,6 +1,6 @@
 # Demo 🤓
 
-<!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort_by=recently_updated -->
+<!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
 * [#897 v0.5 Roadmap: OSS Sponsorship 2.0 – 💰 $20.0](https://github.com/polarsource/polar/issues/897)
 * [#873 Can't use `redis 4.6.0` without connection pool leakage in worker](https://github.com/polarsource/polar/issues/873)
