@@ -1,0 +1,23 @@
+name: 'Polarify'
+description: 'Polar Polarify'
+
+branding:
+  icon: dollar-sign
+  color: blue
+
+inputs:
+  path:
+    description: 'Glob pattern of files fo run Polarify on'
+    default: "**/*.md"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Run
+      run: python polarify/polarify.py ${{ inputs.path }}
+      shell: bash
