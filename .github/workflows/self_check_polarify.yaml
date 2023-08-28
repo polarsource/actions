@@ -7,10 +7,14 @@ on:
     # types: [opened, synchronize]
  
 jobs:
-  build:
+  polarify:
       name: "Self-Polarify"
       timeout-minutes: 15
       runs-on: ubuntu-22.04
+
+      permissions:
+        # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+        contents: write
  
       steps:
         - name: Check out code
