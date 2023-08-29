@@ -60,6 +60,10 @@ def polarify_file(path: str) -> None:
                 sort=args["sort"]
                 if "sort" in args
                 else "funding_goal_desc_and_most_positive_reactions",
+                have_pledge=bool(args["have_pledge"])
+                if "have_pledge" in args
+                else False,
+                have_badge=bool(args["have_badge"]) if "have_badge" in args else False,
             )
 
             start_tag = render_start_tag(args)
@@ -80,9 +84,10 @@ def polarify_file(path: str) -> None:
         else:
             print(f"Invalid Polar comment, unexpected type in: {comment}")
 
-    # Write result 
+    # Write result
     with open(path, "w") as f:
         f.write(contents)
+
 
 def render_start_tag(args: dict[str, str]) -> str:
     p: list[str] = []
@@ -96,12 +101,20 @@ def render_start_tag(args: dict[str, str]) -> str:
     return " ".join(p)
 
 
-def polar_issues(org: str, repo: str | None, limit: int, sort: str) -> str:
+def polar_issues(
+    org: str,
+    repo: str | None,
+    limit: int,
+    sort: str,
+    have_pledge: bool,
+    have_badge: bool,
+) -> str:
     params = {"platform": "github", "organization_name": org}
     if repo:
         params["repository_name"] = repo
-    if repo:
-        params["sort"] = sort
+    params["sort"] = sort
+    params["have_pledge"] = have_pledge
+    params["have_badge"] = have_badge
 
     contents = urllib.request.urlopen(
         f"https://api.polar.sh/api/v1/issues/search?{urllib.parse.urlencode(params)}"
@@ -117,7 +130,20 @@ def polar_issues(org: str, repo: str | None, limit: int, sort: str) -> str:
         issue_title = item["title"]
         txt = f"#{issue_number} {issue_title}"
 
-        if item["funding"]["pledges_sum"]["amount"] > 0:
+        # With funding goal
+        if (
+            item["funding"]["funding_goal"]
+            and item["funding"]["funding_goal"]["amount"] > 0
+        ):
+            funding_dollars = item["funding"]["pledges_sum"]["amount"] / 100
+            goal_dollars = item["funding"]["funding_goal"]["amount"] / 100
+
+            percent = funding_dollars / goal_dollars * 100
+
+            txt += f" – 💰 {percent:.0f}% of ${goal_dollars}"
+
+        # Pledges and no funding goal
+        elif item["funding"]["pledges_sum"]["amount"] > 0:
             dollars = item["funding"]["pledges_sum"]["amount"] / 100
             txt += f" – 💰 ${dollars}"
 
