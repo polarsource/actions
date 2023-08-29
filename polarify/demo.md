@@ -2,16 +2,16 @@
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#898 Set & show funding goal](https://github.com/polarsource/polar/issues/898)
-* [#985 Markdown preview inconsistencies when using markdown in HTML](https://github.com/polarsource/polar/issues/985)
-* [#984 Move Fund This Issue button](https://github.com/polarsource/polar/issues/984)
-* [#962 [feature request] Filter Out Renovate Issues](https://github.com/polarsource/polar/issues/962)
-* [#847 Tooling improvements suggestions](https://github.com/polarsource/polar/issues/847)
-* [#926 Design milestones](https://github.com/polarsource/polar/issues/926)
-* [#897 v0.5 Roadmap: OSS Sponsorship 2.0 – 💰 $20.0](https://github.com/polarsource/polar/issues/897)
-* [#902 Support PayPal](https://github.com/polarsource/polar/issues/902)
-* [#876 Improve support debugging](https://github.com/polarsource/polar/issues/876)
-* [#875 Use custom headers in updated `githubkit` to pass `etag` vs. our own implementation](https://github.com/polarsource/polar/issues/875)
+* [#414 Chrome Extension: Use <ShadowRoot> to isolate styles](https://github.com/polarsource/polar/issues/414)
+* [#409 GitHub App: add copy and assets](https://github.com/polarsource/polar/issues/409)
+* [#265 App blocks migrations](https://github.com/polarsource/polar/issues/265)
+* [#222 Pledge: Show "Connect Stripe" onboarding banner when 1st pledge is made](https://github.com/polarsource/polar/issues/222)
+* [#666 Issue view in dashboard with promotion controls](https://github.com/polarsource/polar/issues/666)
+* [#652 Polar Maintainer Page](https://github.com/polarsource/polar/issues/652)
+* [#454 Link to Settings CC in dashboard pledge overlay vs. show error](https://github.com/polarsource/polar/issues/454)
+* [#337 Private Alpha](https://github.com/polarsource/polar/issues/337)
+* [#225 Integrate Stripe Revenue Recognition](https://github.com/polarsource/polar/issues/225)
+* [#103 Showcase recency of contribution(s)](https://github.com/polarsource/polar/issues/103)
 
 <!-- POLAR-END id=jlaerbca -->
 
