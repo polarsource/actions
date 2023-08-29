@@ -62,8 +62,8 @@ def polarify_file(path: str) -> None:
                 else "funding_goal_desc_and_most_positive_reactions",
                 have_pledge=bool(args["have_pledge"])
                 if "have_pledge" in args
-                else False,
-                have_badge=bool(args["have_badge"]) if "have_badge" in args else False,
+                else None,
+                have_badge=bool(args["have_badge"]) if "have_badge" in args else None,
             )
 
             start_tag = render_start_tag(args)
@@ -106,15 +106,18 @@ def polar_issues(
     repo: str | None,
     limit: int,
     sort: str,
-    have_pledge: bool,
-    have_badge: bool,
+    have_pledge: bool | None,
+    have_badge: bool | None,
 ) -> str:
     params = {"platform": "github", "organization_name": org}
     if repo:
         params["repository_name"] = repo
     params["sort"] = sort
-    params["have_pledge"] = have_pledge
-    params["have_badge"] = have_badge
+
+    if have_pledge is not None:
+        params["have_pledge"] = have_pledge
+    if have_badge is not None:
+        params["have_badge"] = have_badge
 
     contents = urllib.request.urlopen(
         f"https://api.polar.sh/api/v1/issues/search?{urllib.parse.urlencode(params)}"
