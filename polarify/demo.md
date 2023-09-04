@@ -2,16 +2,16 @@
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#876 Improve support debugging](https://github.com/polarsource/polar/issues/876)
-* [#1043 Badge not in dark mode on initial page load with dark GitHub theme](https://github.com/polarsource/polar/issues/1043)
-* [#877 Race condition of repository installation & issue synchronization](https://github.com/polarsource/polar/issues/877)
-* [#849 Custom generic FastAPI exception handler](https://github.com/polarsource/polar/issues/849)
+* [#1053 Launch updated website (maintainer focused)](https://github.com/polarsource/polar/issues/1053)
+* [#1052 Backer: Magic link sign in w. upgrade path to GitHub](https://github.com/polarsource/polar/issues/1052)
+* [#1051 Meta: Update GitHub Issues w. updated backlog](https://github.com/polarsource/polar/issues/1051)
+* [#1050 Backer: Credit card on file](https://github.com/polarsource/polar/issues/1050)
+* [#1049 Feature flag](https://github.com/polarsource/polar/issues/1049)
+* [#1048 Backer: Recommended issues](https://github.com/polarsource/polar/issues/1048)
+* [#409 GitHub App: add copy and assets](https://github.com/polarsource/polar/issues/409)
 * [#926 Milestones](https://github.com/polarsource/polar/issues/926)
-* [#838 Toast low contrast in dark mode](https://github.com/polarsource/polar/issues/838)
-* [#898 Set & show funding goal – 💰 0% of $500.0](https://github.com/polarsource/polar/issues/898)
-* [#985 Markdown preview inconsistencies when using markdown in HTML](https://github.com/polarsource/polar/issues/985)
-* [#984 Move Fund This Issue button](https://github.com/polarsource/polar/issues/984)
-* [#962 [feature request] Filter Out Renovate Issues](https://github.com/polarsource/polar/issues/962)
+* [#897 North Star – 💰 20% of $100.0](https://github.com/polarsource/polar/issues/897)
+* [#876 Improve support debugging](https://github.com/polarsource/polar/issues/876)
 
 <!-- POLAR-END id=jlaerbca -->
 
