@@ -2,16 +2,16 @@
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#1052 Backer: Magic link sign in w. upgrade path to GitHub](https://github.com/polarsource/polar/issues/1052)
-* [#1092 Handle GitHub renamed and moved orgs/repos/issues](https://github.com/polarsource/polar/issues/1092)
-* [#1089 Backer: Updated navigation](https://github.com/polarsource/polar/issues/1089)
-* [#1081 Worker is maxed out (100% CPU) for many minutes](https://github.com/polarsource/polar/issues/1081)
-* [#1043 Badge not in dark mode on initial page load with dark GitHub theme](https://github.com/polarsource/polar/issues/1043)
-* [#1063 GitHub issue link validation fails if there is a fragment](https://github.com/polarsource/polar/issues/1063)
-* [#926 Milestones](https://github.com/polarsource/polar/issues/926)
-* [#902 Support PayPal](https://github.com/polarsource/polar/issues/902)
-* [#1074 Create a branded and improved 404](https://github.com/polarsource/polar/issues/1074)
-* [#1051 Meta: Update GitHub Issues w. updated backlog](https://github.com/polarsource/polar/issues/1051)
+* [#1125 Create bounty](https://github.com/polarsource/polar/issues/1125)
+* [#1127 Tip PR](https://github.com/polarsource/polar/issues/1127)
+* [#1124 Mobile optimized maintainer dashboard](https://github.com/polarsource/polar/issues/1124)
+* [#1123 Polar React SDK](https://github.com/polarsource/polar/issues/1123)
+* [#1122 Standalone & public Polar API TypeScript package](https://github.com/polarsource/polar/issues/1122)
+* [#1121 Design first iteration of "Teams" experience for backers](https://github.com/polarsource/polar/issues/1121)
+* [#1109 Maintainer can accept/deny an inbound pledge](https://github.com/polarsource/polar/issues/1109)
+* [#1110 Extension: Support backer use case](https://github.com/polarsource/polar/issues/1110)
+* [#1105 Fund regardless](https://github.com/polarsource/polar/issues/1105)
+* [#1107 Extension: Maintainer can badge issue directly](https://github.com/polarsource/polar/issues/1107)
 
 <!-- POLAR-END id=jlaerbca -->
 
