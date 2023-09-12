@@ -2,7 +2,7 @@
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#1135 Redis command error on `list_issues_from_starred` if issue list is empty](https://github.com/polarsource/polar/issues/1135)
+* [#1137 Propagate log Correlation ID from server to worker task](https://github.com/polarsource/polar/issues/1137)
 * [#1052 Backer: Magic link sign in w. upgrade path to GitHub](https://github.com/polarsource/polar/issues/1052)
 * [#1132 Remove standalone ToS prompt in the signup flow](https://github.com/polarsource/polar/issues/1132)
 * [#1129 Add legal disclaimer to new maintainer signup page](https://github.com/polarsource/polar/issues/1129)
