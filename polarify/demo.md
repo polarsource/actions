@@ -2,16 +2,16 @@
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#1268 [POL-96] [POL-95] Setting to customize Polar badge label](https://github.com/polarsource/polar/issues/1268)
-* [#33 [POL-69] Delete the badge data endpoint (it's unused)](https://github.com/polarsource/polar/issues/33)
-* [#878 [POL-49] Some issues are not badged](https://github.com/polarsource/polar/issues/878)
-* [#874 [POL-48] ValidationError on parsing certain issue references](https://github.com/polarsource/polar/issues/874)
-* [#1234 [POL-42] Link to blog and docs from the website](https://github.com/polarsource/polar/issues/1234)
-* [#1106 [POL-72] Better FAQ on funding page](https://github.com/polarsource/polar/issues/1106)
-* [#1053 Launch updated website (maintainer focused)](https://github.com/polarsource/polar/issues/1053)
-* [#1146 [POL-30] Backer: Add new credit card on file from /settings](https://github.com/polarsource/polar/issues/1146)
-* [#1182 [POL-40] SVG Badge is not showing in GitHub notifications emails ](https://github.com/polarsource/polar/issues/1182)
-* [#1250 [POL-45] Leverage FastAPI/Pydantic features to avoid the `from_db` pattern](https://github.com/polarsource/polar/issues/1250)
+* [#1294 🎯 💄 Maintainer Page v2](https://github.com/polarsource/polar/issues/1294)
+* [#1293 🎯 🧲 FUNDING.yml](https://github.com/polarsource/polar/issues/1293)
+* [#1292 🎯 🎉 Issue Promotion](https://github.com/polarsource/polar/issues/1292)
+* [#897 🎯 North Star – 💰 20% of $100.0](https://github.com/polarsource/polar/issues/897)
+* [#902 🎯 Support PayPal – 💰 $20.0](https://github.com/polarsource/polar/issues/902)
+* [#1127 🎯 Tip PR](https://github.com/polarsource/polar/issues/1127)
+* [#1124 🎯 Mobile optimized maintainer dashboard](https://github.com/polarsource/polar/issues/1124)
+* [#1287 🎯 👔 Polar for Businesses](https://github.com/polarsource/polar/issues/1287)
+* [#1276 🎯 💼 Fund on behalf of organization](https://github.com/polarsource/polar/issues/1276)
+* [#1290 🎯 ⛰️ Fund Campaigns](https://github.com/polarsource/polar/issues/1290)
 
 <!-- POLAR-END id=jlaerbca -->
 
