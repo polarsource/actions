@@ -2,16 +2,16 @@
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#1331 Funding page: Enhance the funding stats](https://github.com/polarsource/polar/issues/1331)
-* [#1313 Notifications shown behind other content (too low z-index)](https://github.com/polarsource/polar/issues/1313)
-* [#1327 Separate backer vs. maintainer in profile picker](https://github.com/polarsource/polar/issues/1327)
-* [#1321 Implement a `/funding` Public API](https://github.com/polarsource/polar/issues/1321)
+* [#1340 Polar SDK: Setup Github-action for NPM package deployment](https://github.com/polarsource/polar/issues/1340)
+* [#1353 Lower dispute window to 7 days](https://github.com/polarsource/polar/issues/1353)
+* [#1352 Autosuggest contributors in rewards prompt](https://github.com/polarsource/polar/issues/1352)
+* [#1351 Ensure Stripe sends invoice emails directly on completed issues](https://github.com/polarsource/polar/issues/1351)
 * [#1125 🎯💝 Rewards](https://github.com/polarsource/polar/issues/1125)
-* [#1329 Show rewards module in funding page](https://github.com/polarsource/polar/issues/1329)
-* [#1202 Issue row redesign in dashboard](https://github.com/polarsource/polar/issues/1202)
-* [#1326 Create an empty state for issues](https://github.com/polarsource/polar/issues/1326)
-* [#1324 Don't show "Connect repositories" in backer dashboard if user has maintainer profile](https://github.com/polarsource/polar/issues/1324)
-* [#1294 🎯 💄 Maintainer Page v2](https://github.com/polarsource/polar/issues/1294)
+* [#1122 Standalone & public Polar API TypeScript package](https://github.com/polarsource/polar/issues/1122)
+* [#1341 Polar SDK: Replace Axios with standard Fetch library](https://github.com/polarsource/polar/issues/1341)
+* [#1347 Maintainer posts comment to share rewards](https://github.com/polarsource/polar/issues/1347)
+* [#1348 Polar SDK: Create NPM access token and add to Github secrets](https://github.com/polarsource/polar/issues/1348)
+* [#1333 Maintainer issue list: Show closed issues if there are actions required](https://github.com/polarsource/polar/issues/1333)
 
 <!-- POLAR-END id=jlaerbca -->
 
