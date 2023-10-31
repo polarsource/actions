@@ -8,6 +8,7 @@ import random
 import inspect
 import os
 
+POLAR_API_BASE = os.getenv("POLAR_API_BASE", "https://api.polar.sh")
 POLAR_API_TOKEN = os.getenv("POLAR_API_TOKEN", None)
 
 
@@ -72,7 +73,7 @@ def polarify_file(path: str) -> None:
             )
 
         elif args["type"] == "pledgers":
-            rendered = polar_pledgers_avatars("zegloforko")
+            rendered = polar_pledgers_avatars(org=args["org"])
         else:
             print(f"Invalid Polar comment, unexpected type in: {comment}")
 
@@ -118,7 +119,7 @@ class Organization:
 def api_organization_lookup(org: str) -> Organization:
     params = {"platform": "github", "organization_name": org}
     contents = urllib.request.urlopen(
-        f"https://api.polar.sh/api/v1/organizations/lookup?{urllib.parse.urlencode(params)}"
+        f"{POLAR_API_BASE}/api/v1/organizations/lookup?{urllib.parse.urlencode(params)}"
     )
     data = json.load(contents)
     return Organization(**data)
@@ -196,7 +197,7 @@ def api_pledges_search(org: str) -> ListPledges:
 
     params = {"platform": "github", "organization_name": org}
     request = urllib.request.Request(
-        url=f"http://127.0.0.1:8000/api/v1/pledges/search?{urllib.parse.urlencode(params)}",
+        url=f"{POLAR_API_BASE}/api/v1/pledges/search?{urllib.parse.urlencode(params)}",
         headers={"Authorization": f"Bearer {POLAR_API_TOKEN}"},
     )
     contents = urllib.request.urlopen(request)
@@ -223,7 +224,7 @@ def polar_issues(
         params["have_badge"] = have_badge
 
     contents = urllib.request.urlopen(
-        f"https://api.polar.sh/api/v1/issues/search?{urllib.parse.urlencode(params)}"
+        f"{POLAR_API_BASE}/api/v1/issues/search?{urllib.parse.urlencode(params)}"
     )
     data = json.load(contents)
 
@@ -275,6 +276,9 @@ def polar_pledgers_avatars(org: str) -> str:
     deduplicated: dict[str, DedupPledger] = {}
 
     for p in pledges.items:
+        if not p.pledger.avatar_url:
+            continue
+
         if p.pledger.avatar_url in deduplicated:
             existing = deduplicated.get(p.pledger.avatar_url)
             existing.amount = existing.amount + p.amount.amount
