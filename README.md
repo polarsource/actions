@@ -40,7 +40,7 @@ The Polar GitHub Action integrates data from [Polar](https://polar.sh/) in stati
 
 Add the following to your GitHub Actions workflow. ([Example](https://github.com/polarsource/actions/blob/main/.github/workflows/self_check_polarify.yaml))
 
-```markdown
+```yaml
 - name: Polarify
   uses: polarsource/actions/polarify@main
   with:
@@ -50,8 +50,100 @@ Add the following to your GitHub Actions workflow. ([Example](https://github.com
 
 Use the polarify in your website build pipeline, or run it regularly and auto-commit the updated data to your website with the [`stefanzweifel/git-auto-commit-action@v4`](https://github.com/stefanzweifel/git-auto-commit-action) action.
 
+## GitHub Actions Examples
+
+<details>
+  <summary><strong>👉 Example with Pull Requests</strong></summary>
+
+
+```yaml
+name: Polarify
+
+on:
+  # Run after every push
+  push:
+    branches: ["main"]
+
+  # Daily at 07:00
+  schedule:
+    - cron: "0 7 * * *"
+
+jobs:
+  polarify:
+    name: "Polarify"
+    timeout-minutes: 15
+    runs-on: ubuntu-22.04
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+      # Depending on your use-case, you might need to check "Allow GitHub Actions to create and approve pull requests" in the repositories "Actions > General" settings.
+      pull-requests: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Polarify
+        uses: polarsource/actions/polarify@main
+        with:
+          # Update this glob pattern to match the files that you want to update
+          path: "**/*.md"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Updated data from Polar"
+          commit-message: "polar: updated data from Polar"
+          body: "Automatic changes from Polar and the Polarify GitHub Action"
+          branch: "polarify"
+          delete-branch: true # delete the branch after merging
+```
+
+</details>
+
+<details>
+  <summary><strong>👉 Example with direct push to main</strong></summary>
+
+```yaml
+name: Polarify
+
+on:
+  # Run after every push
+  push:
+    branches: ["main"]
+
+  # Daily at 07:00
+  schedule:
+    - cron: "0 7 * * *"
+
+jobs:
+  polarify:
+    name: "Polarify"
+    timeout-minutes: 15
+    runs-on: ubuntu-22.04
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Polarify
+        uses: polarsource/actions/polarify@main
+        with:
+          # Update this glob pattern to match the files that you want to update
+          path: "**/*.md"
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update polar comments
+```
+</details>
+
 ## Example
 
 * [Example Action](https://github.com/polarsource/actions/blob/main/.github/workflows/self_check_polarify.yaml)
 * [Example Blog Post](https://github.com/polarsource/actions/blob/main/polarify/demo.md?plain=1)
-
