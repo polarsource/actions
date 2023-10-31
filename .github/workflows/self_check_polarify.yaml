@@ -1,5 +1,5 @@
 name: Polarify
- 
+
 # Example action of how to use the polarsource/actions/polarify action and auto-commiting the results to the repository.
 
 on:
@@ -7,29 +7,29 @@ on:
   push:
     branches: ["main"]
 
-  # Daily at 07:00  
+  # Daily at 07:00
   schedule:
     - cron: "0 7 * * *"
- 
+
 jobs:
   polarify:
-      name: "Self-Polarify"
-      timeout-minutes: 15
-      runs-on: ubuntu-22.04
+    name: "Self-Polarify"
+    timeout-minutes: 15
+    runs-on: ubuntu-22.04
 
-      permissions:
-        # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
-        contents: write
- 
-      steps:
-        - name: Check out code
-          uses: actions/checkout@v3
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
 
-        - name: Polarify
-          uses: polarsource/actions/polarify@main
-          with:
-            path: "**/demo.md"
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
 
-        - uses: stefanzweifel/git-auto-commit-action@v4
-          with:
-            commit_message: Update polar comments
+      - name: Polarify
+        uses: polarsource/actions/polarify@main
+        with:
+          path: "**/demo**.md"
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update polar comments
