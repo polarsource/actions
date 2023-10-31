@@ -269,6 +269,7 @@ def polar_pledgers_avatars(org: str) -> str:
     class DedupPledger:
         name: str
         avatar_url: str
+        github_username: str | None
         amount: int
 
     deduplicated: dict[str, DedupPledger] = {}
@@ -283,6 +284,7 @@ def polar_pledgers_avatars(org: str) -> str:
                 name=p.pledger.name,
                 avatar_url=p.pledger.avatar_url,
                 amount=p.amount.amount,
+                github_username=p.pledger.github_username,
             )
 
     ls = deduplicated.values()
@@ -291,7 +293,12 @@ def polar_pledgers_avatars(org: str) -> str:
     res = ""
 
     for p in ls:
-        res += f'<img src="{p.avatar_url}" width=100 height=100 alt="{p.name}" />'
+        item = f'<img src="{p.avatar_url}" width=100 height=100 />'
+
+        if p.github_username:
+            item = f'<a href="https://github.com/{p.github_username}">{item}</a>'
+
+        res += item + "\n"
 
     return res
 
