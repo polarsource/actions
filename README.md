@@ -89,6 +89,9 @@ jobs:
         with:
           # Update this glob pattern to match the files that you want to update
           path: "**/*.md"
+        # This is needed if you're accessing private data in the action (type=pledgers), if not, you can skip it!
+        env:
+          POLAR_API_TOKEN: ${{ secrets.POLAR_API_TOKEN }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
@@ -136,6 +139,9 @@ jobs:
         with:
           # Update this glob pattern to match the files that you want to update
           path: "**/*.md"
+        # This is needed if you're accessing private data in the action (type=pledgers), if not, you can skip it!
+        env:
+          POLAR_API_TOKEN: ${{ secrets.POLAR_API_TOKEN }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -147,3 +153,4 @@ jobs:
 
 * [Example Action](https://github.com/polarsource/actions/blob/main/.github/workflows/self_check_polarify.yaml)
 * [Example Blog Post](https://github.com/polarsource/actions/blob/main/polarify/demo.md?plain=1)
+
