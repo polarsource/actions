@@ -291,7 +291,7 @@ def polar_pledgers_avatars(org: str) -> str:
     res = ""
 
     for p in ls:
-        res += f"![{p.name}]({p.avatar_url})\n"
+        res += f'<img src="{p.avatar_url}" width=100 height=100 alt="{p.name}" />'
 
     return res
 
