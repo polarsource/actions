@@ -1,9 +1,14 @@
+from dataclasses import dataclass
 import string
 import sys
 import urllib.request
 import urllib.parse
 import json
 import random
+import inspect
+import os
+
+POLAR_API_TOKEN = os.getenv("POLAR_API_TOKEN", None)
 
 
 def polarify() -> None:
@@ -50,9 +55,9 @@ def polarify_file(path: str) -> None:
         existing_end = contents.find(end_tag, idx)
         append_from = existing_end + len(end_tag) if existing_end > 0 else next_start
 
-        if args["type"] == "issues":
-            print("Expanding: ", comment)
+        print("Expanding: ", comment)
 
+        if args["type"] == "issues":
             rendered = polar_issues(
                 org=args["org"],
                 repo=args["repo"],
@@ -66,23 +71,25 @@ def polarify_file(path: str) -> None:
                 have_badge=bool(args["have_badge"]) if "have_badge" in args else None,
             )
 
-            start_tag = render_start_tag(args)
-
-            contents = (
-                contents[0:idx]
-                + start_tag
-                + "\n"
-                + rendered
-                + "\n"
-                + end_tag
-                + contents[append_from:]
-            )
-
-            # adjust next start
-            next_start = idx + len(start_tag) + 1 + len(rendered) + 1 + len(end_tag)
-
+        elif args["type"] == "pledgers":
+            rendered = polar_pledgers_avatars("zegloforko")
         else:
             print(f"Invalid Polar comment, unexpected type in: {comment}")
+
+        start_tag = render_start_tag(args)
+
+        contents = (
+            contents[0:idx]
+            + start_tag
+            + "\n"
+            + rendered
+            + "\n"
+            + end_tag
+            + contents[append_from:]
+        )
+
+        # adjust next start
+        next_start = idx + len(start_tag) + 1 + len(rendered) + 1 + len(end_tag)
 
     # Write result
     with open(path, "w") as f:
@@ -92,13 +99,109 @@ def polarify_file(path: str) -> None:
 def render_start_tag(args: dict[str, str]) -> str:
     p: list[str] = []
     p += ["<!-- POLAR"]
+
     p += ["type=" + args["type"]]
     p += ["id=" + args["id"]]
-    p += ["org=" + args["org"]] if args["org"] else []
-    p += ["repo=" + args["repo"]] if args["repo"] else []
+    p += ["org=" + args["org"]] if "org" in args else []
+    p += ["repo=" + args["repo"]] if "repo" in args else []
     p += [f"{k}={v}" for k, v in args.items() if k not in ["type", "id", "org", "repo"]]
     p += ["-->"]
     return " ".join(p)
+
+
+@dataclass
+class Organization:
+    id: str
+    name: str
+
+
+def api_organization_lookup(org: str) -> Organization:
+    params = {"platform": "github", "organization_name": org}
+    contents = urllib.request.urlopen(
+        f"https://api.polar.sh/api/v1/organizations/lookup?{urllib.parse.urlencode(params)}"
+    )
+    data = json.load(contents)
+    return Organization(**data)
+
+
+@dataclass
+class CurrencyAmount:
+    currency: str
+    amount: int
+
+    @classmethod
+    def init(cls, js: dict[str, any]):
+        data = {}
+        for k, v in js.items():
+            if k in inspect.signature(cls).parameters:
+                data[k] = v
+        return cls(**data)
+
+
+@dataclass
+class Pledger:
+    name: str
+    github_username: str | None
+    avatar_url: str
+
+    @classmethod
+    def init(cls, js: dict[str, any]):
+        data = {}
+        for k, v in js.items():
+            if k in inspect.signature(cls).parameters:
+                data[k] = v
+        return cls(**data)
+
+
+@dataclass
+class Pledge:
+    id: str
+    amount: CurrencyAmount
+    pledger: Pledger
+
+    @classmethod
+    def init(cls, jsonElement):
+        data = {}
+        for k, v in jsonElement.items():
+            if k in inspect.signature(cls).parameters:
+                if k == "amount":
+                    data[k] = CurrencyAmount.init(v)
+                elif k == "pledger":
+                    data[k] = Pledger.init(v)
+                else:
+                    data[k] = v
+        return cls(**data)
+
+
+@dataclass
+class ListPledges:
+    items: list[Pledge]
+
+    @classmethod
+    def init(cls, jsonElement):
+        data = {}
+        for k, v in jsonElement.items():
+            if k in inspect.signature(cls).parameters:
+                if k == "items":
+                    data[k] = list(map(Pledge.init, v))
+                else:
+                    data[k] = v
+        return cls(**data)
+
+
+def api_pledges_search(org: str) -> ListPledges:
+    if not POLAR_API_TOKEN:
+        print("POLAR_API_TOKEN is not set", file=sys.stderr)
+        exit(1)
+
+    params = {"platform": "github", "organization_name": org}
+    request = urllib.request.Request(
+        url=f"http://127.0.0.1:8000/api/v1/pledges/search?{urllib.parse.urlencode(params)}",
+        headers={"Authorization": f"Bearer {POLAR_API_TOKEN}"},
+    )
+    contents = urllib.request.urlopen(request)
+    data = json.load(contents)
+    return ListPledges.init(data)
 
 
 def polar_issues(
@@ -157,6 +260,40 @@ def polar_issues(
     bullets = "\n".join(list_items)
 
     return "\n" + bullets + "\n"
+
+
+def polar_pledgers_avatars(org: str) -> str:
+    pledges = api_pledges_search(org)
+
+    @dataclass
+    class DedupPledger:
+        name: str
+        avatar_url: str
+        amount: int
+
+    deduplicated: dict[str, DedupPledger] = {}
+
+    for p in pledges.items:
+        if p.pledger.avatar_url in deduplicated:
+            existing = deduplicated.get(p.pledger.avatar_url)
+            existing.amount = existing.amount + p.amount.amount
+            deduplicated[p.pledger.avatar_url] = existing
+        else:
+            deduplicated[p.pledger.avatar_url] = DedupPledger(
+                name=p.pledger.name,
+                avatar_url=p.pledger.avatar_url,
+                amount=p.amount.amount,
+            )
+
+    ls = deduplicated.values()
+    sorted(ls, key=lambda x: x.amount)
+
+    res = ""
+
+    for p in ls:
+        res += f"![{p.name}]({p.avatar_url})\n"
+
+    return res
 
 
 def parse_comment(comment: str) -> dict[str, str]:
