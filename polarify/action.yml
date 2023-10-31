@@ -19,5 +19,5 @@ runs:
       with:
         python-version: '3.11'
     - name: Run
-      run: python ${{ github.action_path }}/polarify/polarify.py ${{ inputs.path }}
+      run: python ${{ github.action_path }}/polarify.py ${{ inputs.path }}
       shell: bash
