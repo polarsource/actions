@@ -10,8 +10,8 @@
 * [#1604 Enable more Stripe payment options](https://github.com/polarsource/polar/issues/1604)
 * [#1603 Links in the notification menu don't open any page – 💰 $10.0](https://github.com/polarsource/polar/issues/1603)
 * [#1594 Organization/User metadata `populate_org_metadata` is not refreshed](https://github.com/polarsource/polar/issues/1594)
-* [#155 Setting to toggle dark mode](https://github.com/polarsource/polar/issues/155)
 * [#222 Pledge: Show "Connect Stripe" onboarding banner when 1st pledge is made](https://github.com/polarsource/polar/issues/222)
+* [#155 Setting to toggle dark mode](https://github.com/polarsource/polar/issues/155)
 
 <!-- POLAR-END id=jlaerbca -->
 
