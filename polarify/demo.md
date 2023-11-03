@@ -1,5 +1,7 @@
 # Demo 🤓
 
+Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated`
+
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
 * [#1277 🎯 📚 Content & Guides](https://github.com/polarsource/polar/issues/1277)
