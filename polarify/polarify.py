@@ -72,8 +72,8 @@ def polarify_file(path: str) -> None:
                 have_badge=bool(args["have_badge"]) if "have_badge" in args else None,
             )
 
-        elif args["type"] == "pledgers":
-            rendered = polar_pledgers_avatars(org=args["org"])
+        elif args["type"] == "backers-avatars":
+            rendered = polar_backers_avatars(org=args["org"])
         else:
             print(f"Invalid Polar comment, unexpected type in: {comment}")
 
@@ -263,7 +263,7 @@ def polar_issues(
     return "\n" + bullets + "\n"
 
 
-def polar_pledgers_avatars(org: str) -> str:
+def polar_backers_avatars(org: str) -> str:
     pledges = api_pledges_search(org)
 
     @dataclass

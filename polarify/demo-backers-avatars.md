@@ -1,4 +1,6 @@
-# Pledgers toplist
+# Backers Avatars
+
+Demo: `type=backers-avatars org=polarsource`
 
 <!-- POLAR type=pledgers id=jqfqrilw org=polarsource -->
 <a href="https://github.com/birkjernstrom"><img src="https://avatars.githubusercontent.com/u/281715?v=4" width=100 height=100 /></a>

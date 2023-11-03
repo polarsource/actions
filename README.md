@@ -50,6 +50,11 @@ Add the following to your GitHub Actions workflow. ([Example](https://github.com
 
 Use the polarify in your website build pipeline, or run it regularly and auto-commit the updated data to your website with the [`stefanzweifel/git-auto-commit-action@v4`](https://github.com/stefanzweifel/git-auto-commit-action) action.
 
+## "types"
+
+* `issues` - [[example](./polarify/demo.md)]  - A list of links to the top issues in a org or repository. Options: `org`, `repo`, `limit` (optional), `sort` (optional), `have_pledge` (optional), `have_badge` (optional)
+* `backers-avatars` - [[example](./polarify/demo-backers-avatars.md)] - Avatar images and links to GitHub profiles, sorted by backed amount. Options: `org`. Requires `POLAR_API_TOKEN`.
+
 ## GitHub Actions Examples
 
 <details>
