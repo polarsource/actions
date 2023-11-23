@@ -58,6 +58,8 @@ def polarify_file(path: str) -> None:
 
         print("Expanding: ", comment)
 
+        rendered = ""
+
         if args["type"] == "issues":
             rendered = polar_issues(
                 org=args["org"],
