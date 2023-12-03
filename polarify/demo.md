@@ -4,6 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#1837 I could not found my reword page](https://github.com/polarsource/polar/issues/1837)
 * [#1748 🎯 📖 Posts](https://github.com/polarsource/polar/issues/1748)
 * [#1826 New users without GitHub account have an empty navigation](https://github.com/polarsource/polar/issues/1826)
 * [#1819 🎯 😍 Premium Posts](https://github.com/polarsource/polar/issues/1819)
@@ -13,7 +14,6 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 * [#1807 Merge personal maintainer and contributor `Account`](https://github.com/polarsource/polar/issues/1807)
 * [#1727 🎯💰 Accounting](https://github.com/polarsource/polar/issues/1727)
 * [#1803 Killswitch for all feature-flags in Settings](https://github.com/polarsource/polar/issues/1803)
-* [#1769 Use shadcn for the country selector menu in account creation modal](https://github.com/polarsource/polar/issues/1769)
 
 <!-- POLAR-END id=jlaerbca -->
 
