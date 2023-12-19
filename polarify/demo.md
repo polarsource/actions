@@ -4,8 +4,8 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#2002 Link to issue pledge page vs. GitHub in the issue list on the maintainer page](https://github.com/polarsource/polar/issues/2002)
 * [#1999 Unsubscribe page does not render in production?](https://github.com/polarsource/polar/issues/1999)
-* [#1914 Attempting to connect a GitHub account which already is linked with another account results in a vague error](https://github.com/polarsource/polar/issues/1914)
 * [#1859 🎯 🔁 Business Subscriptions](https://github.com/polarsource/polar/issues/1859)
 * [#1962 Subscriptions: offer to downgrade to "free" when unsubscribing from a paid tier](https://github.com/polarsource/polar/issues/1962)
 * [#1928 Posts as RSS](https://github.com/polarsource/polar/issues/1928)
