@@ -4,6 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#2042 Links lead to 404 when trailing slash is missing ](https://github.com/polarsource/polar/issues/2042)
 * [#2041 Support some keyboard shortcuts in the posts editor](https://github.com/polarsource/polar/issues/2041)
 * [#2038 Re-enable reactions and funding goal in OG images](https://github.com/polarsource/polar/issues/2038)
 * [#2016 Topbar on issues page has no padding](https://github.com/polarsource/polar/issues/2016)
@@ -13,7 +14,6 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 * [#1921 User configurable Discord webhooks](https://github.com/polarsource/polar/issues/1921)
 * [#1818 🎯👋🏼 Progressive Onboarding](https://github.com/polarsource/polar/issues/1818)
 * [#1894 API for retrieving top pledgers](https://github.com/polarsource/polar/issues/1894)
-* [#1860 🎯 Feed](https://github.com/polarsource/polar/issues/1860)
 
 <!-- POLAR-END id=jlaerbca -->
 
