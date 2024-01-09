@@ -4,7 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#2133 Post images in fullscreen](https://github.com/polarsource/polar/issues/2133)
+* [#2158 Add tooltip to "Tax applicable" in benefit creation modal](https://github.com/polarsource/polar/issues/2158)
 * [#2132 Subscriber stats overflowing posts in dashboard](https://github.com/polarsource/polar/issues/2132)
 * [#2120 Posts: subscription upsell in the footer visible to subscribers](https://github.com/polarsource/polar/issues/2120)
 * [#2117 IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolatio...](https://github.com/polarsource/polar/issues/2117)
