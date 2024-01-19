@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import html
 import string
 import sys
 import urllib.request
@@ -76,6 +77,12 @@ def polarify_file(path: str) -> None:
 
         elif args["type"] == "backers-avatars":
             rendered = polar_backers_avatars(org=args["org"])
+        elif args["type"] == "ads":
+            rendered = polar_ads(
+                subscription_benefit_id=args["subscription_benefit_id"],
+                height=int(args["height"]),
+                width=int(args["width"]),
+            )
         else:
             print(f"Invalid Polar comment, unexpected type in: {comment}")
 
@@ -307,6 +314,26 @@ def polar_backers_avatars(org: str) -> str:
         res += item + "\n"
 
     return res
+
+
+def polar_ads(subscription_benefit_id: str, height: int, width: int) -> str:
+    params = {"subscription_benefit_id": subscription_benefit_id}
+
+    request = urllib.request.Request(
+        f"{POLAR_API_BASE}/api/v1/advertisements/campaigns/search?{urllib.parse.urlencode(params)}",
+        headers={"Authorization": f"Bearer {POLAR_API_TOKEN}"},
+    )
+    contents = urllib.request.urlopen(request)
+
+    data = json.load(contents)
+
+    ads = []
+
+    for item in data["items"]:
+        ad = f'<a href="{html.escape(item["link_url"])}"><img src="{html.escape(item["image_url"])}" alt="{html.escape(item["text"])}" height="{height}" width="{width}" /></a>'
+        ads.append(ad)
+
+    return "\n" + "\n".join(ads) + "\n"
 
 
 def parse_comment(comment: str) -> dict[str, str]:
