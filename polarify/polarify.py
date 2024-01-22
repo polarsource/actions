@@ -330,7 +330,16 @@ def polar_ads(subscription_benefit_id: str, height: int, width: int) -> str:
     ads = []
 
     for item in data["items"]:
-        ad = f'<a href="{html.escape(item["link_url"])}"><img src="{html.escape(item["image_url"])}" alt="{html.escape(item["text"])}" height="{height}" width="{width}" /></a>'
+        ad = f'<a href="{html.escape(item["link_url"])}">'
+        ad += "<picture>"
+
+        if "image_url_dark" in item and item["image_url_dark"]:
+            ad += f'<source media="(prefers-color-scheme: dark)" srcset="{html.escape(item["image_url_dark"])}">'
+        ad += f'<img src="{html.escape(item["image_url"])}" alt="{html.escape(item["text"])}" height="{height}" width="{width}" />'
+
+        ad += "</picture>"
+        ad += "</a>"
+
         ads.append(ad)
 
     return "\n" + "\n".join(ads) + "\n"
