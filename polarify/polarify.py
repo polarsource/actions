@@ -333,9 +333,11 @@ def polar_ads(subscription_benefit_id: str, height: int, width: int) -> str:
         ad = f'<a href="{html.escape(item["link_url"])}">'
         ad += "<picture>"
 
+        image_url = f'https://polar.sh/embed/ad?id={item["id"]}'
         if "image_url_dark" in item and item["image_url_dark"]:
-            ad += f'<source media="(prefers-color-scheme: dark)" srcset="{html.escape(item["image_url_dark"])}">'
-        ad += f'<img src="{html.escape(item["image_url"])}" alt="{html.escape(item["text"])}" height="{height}" width="{width}" />'
+            image_url_dark = f'https://polar.sh/embed/ad?id={item["id"]}&dark=1'
+            ad += f'<source media="(prefers-color-scheme: dark)" srcset="{image_url_dark}">'
+        ad += f'<img src="{image_url}" alt="{html.escape(item["text"])}" height="{height}" width="{width}" />'
 
         ad += "</picture>"
         ad += "</a>"
