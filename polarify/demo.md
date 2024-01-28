@@ -4,6 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#2341 Post: Shortcut to add YouTube embed](https://github.com/polarsource/polar/issues/2341)
 * [#2186 Support dark mode without JS](https://github.com/polarsource/polar/issues/2186)
 * [#2334 Bug: Creating a newline before a word makes the editor jump](https://github.com/polarsource/polar/issues/2334)
 * [#2336 Bug: Changing cursor location when uploading an image causes the image to be inserted incorrectly](https://github.com/polarsource/polar/issues/2336)
@@ -13,7 +14,6 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 * [#2221 One-click creator mode activation](https://github.com/polarsource/polar/issues/2221)
 * [#2222 Instant creator signup via polar.sh](https://github.com/polarsource/polar/issues/2222)
 * [#2214 Subscriptions/Posts: track email bounces](https://github.com/polarsource/polar/issues/2214)
-* [#2096 Subscription Tier: hidden under toolbar after navigation](https://github.com/polarsource/polar/issues/2096)
 
 <!-- POLAR-END id=jlaerbca -->
 
