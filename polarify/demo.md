@@ -4,9 +4,9 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#2372 Settings: GitHub email is shown instead of username](https://github.com/polarsource/polar/issues/2372)
 * [#2341 Post: Shortcut to add YouTube embed](https://github.com/polarsource/polar/issues/2341)
 * [#2360 Subscriptions: benefit icon shrinks](https://github.com/polarsource/polar/issues/2360)
-* [#2348 og:image generation for articles is broken](https://github.com/polarsource/polar/issues/2348)
 * [#2186 Support dark mode without JS](https://github.com/polarsource/polar/issues/2186)
 * [#2334 Bug: Creating a newline before a word makes the editor jump](https://github.com/polarsource/polar/issues/2334)
 * [#2336 Bug: Changing cursor location when uploading an image causes the image to be inserted incorrectly](https://github.com/polarsource/polar/issues/2336)
