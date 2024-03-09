@@ -4,16 +4,16 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#2172 404 page requires JS](https://github.com/polarsource/polar/issues/2172)
 * [#2629 GitHub: Create discussion from post](https://github.com/polarsource/polar/issues/2629)
 * [#2771 Remove IssueReference and IssueDependency models and logic](https://github.com/polarsource/polar/issues/2771)
-* [#2761 Have a separate worker queue for GitHub jobs](https://github.com/polarsource/polar/issues/2761)
-* [#2767 Subscriptions: ask user to login after subscribing to a free tier](https://github.com/polarsource/polar/issues/2767)
-* [#2646 Org and project pages that you'd love to share](https://github.com/polarsource/polar/issues/2646)
-* [#2700 Prefill the meta description field when editing it](https://github.com/polarsource/polar/issues/2700)
-* [#2676 Benefits: GitHub repository list overflows when you have a fair amount of repositories](https://github.com/polarsource/polar/issues/2676)
-* [#2671 Landing page: the creators section is almost empty when scrolled down to it](https://github.com/polarsource/polar/issues/2671)
-* [#2615 Stripe 1099 tax form](https://github.com/polarsource/polar/issues/2615)
+* [#2795 Issue funding: Upfront & Held -> Donation](https://github.com/polarsource/polar/issues/2795)
+* [#2646 Polar Pages v2 - Customize & Make projects shine](https://github.com/polarsource/polar/issues/2646)
+* [#2645 Full featured & progressive Polar start page for developers](https://github.com/polarsource/polar/issues/2645)
+* [#2644 Separate GitHub App for Private Repo Access](https://github.com/polarsource/polar/issues/2644)
+* [#2794 Video: Welcome to Polar - Get started (1-2 min)](https://github.com/polarsource/polar/issues/2794)
+* [#2792 Onboarding: Add funding.yaml & GitHub embeds](https://github.com/polarsource/polar/issues/2792)
+* [#2635 Polls](https://github.com/polarsource/polar/issues/2635)
+* [#2643 Subscribe to multiple tiers](https://github.com/polarsource/polar/issues/2643)
 
 <!-- POLAR-END id=jlaerbca -->
 
