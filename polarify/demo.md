@@ -4,7 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#2864 Enhancement: Prettify embed](https://github.com/polarsource/polar/issues/2864)
+* [#2871 Post editor page is broken on mobile](https://github.com/polarsource/polar/issues/2871)
 * [#2641 Polar Webhooks](https://github.com/polarsource/polar/issues/2641)
 * [#2827 Project: Highlighted tiers & subscription CTA](https://github.com/polarsource/polar/issues/2827)
 * [#2846 Codespace: setting up test db](https://github.com/polarsource/polar/issues/2846)
