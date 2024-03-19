@@ -4,6 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#2890 Make Organization Settings visible by default](https://github.com/polarsource/polar/issues/2890)
 * [#2534 Feature Request: Yearly recurring subscription tiers](https://github.com/polarsource/polar/issues/2534)
 * [#2846 Codespace: setting up test db](https://github.com/polarsource/polar/issues/2846)
 * [#2871 Post editor page is broken on mobile](https://github.com/polarsource/polar/issues/2871)
@@ -13,7 +14,6 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 * [#2833 Creator onboarding via public page](https://github.com/polarsource/polar/issues/2833)
 * [#2794 Video: Welcome to Polar - Get started (1-2 min)](https://github.com/polarsource/polar/issues/2794)
 * [#2832 Pages: Update profile from GitHub default](https://github.com/polarsource/polar/issues/2832)
-* [#2831 Pages: Change section ordering](https://github.com/polarsource/polar/issues/2831)
 
 <!-- POLAR-END id=jlaerbca -->
 
