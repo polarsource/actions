@@ -4,16 +4,16 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#2914 Posts: Only one draft at a time](https://github.com/polarsource/polar/issues/2914)
-* [#2908 Default highlighted tiers on users Polar page in case they haven't specified ones](https://github.com/polarsource/polar/issues/2908)
-* [#2907 Offer package of Polar Brand assets ](https://github.com/polarsource/polar/issues/2907)
-* [#2641 Polar Webhooks](https://github.com/polarsource/polar/issues/2641)
-* [#2890 Make Organization Settings visible by default](https://github.com/polarsource/polar/issues/2890)
-* [#2534 Feature Request: Yearly recurring subscription tiers](https://github.com/polarsource/polar/issues/2534)
-* [#2846 Codespace: setting up test db](https://github.com/polarsource/polar/issues/2846)
-* [#2871 Post editor page is broken on mobile](https://github.com/polarsource/polar/issues/2871)
-* [#2827 Project: Highlighted tiers & subscription CTA](https://github.com/polarsource/polar/issues/2827)
+* [#2987 Re-enable Stripe payouts `transfer_group` parameter in a while](https://github.com/polarsource/polar/issues/2987)
+* [#2971 Onboarding: "Polar for Organization" hero could use a refresh](https://github.com/polarsource/polar/issues/2971)
+* [#2964 Bug: Tier edit view issues](https://github.com/polarsource/polar/issues/2964)
+* [#2945 Earnings metric is a bit misleading for current month ](https://github.com/polarsource/polar/issues/2945)
+* [#2938 404 for other organization](https://github.com/polarsource/polar/issues/2938)
+* [#2828 Projects: Show & customize posts](https://github.com/polarsource/polar/issues/2828)
 * [#2833 Creator onboarding via public page](https://github.com/polarsource/polar/issues/2833)
+* [#2808 Polar pages to 404 on dependency vs. registered profiles](https://github.com/polarsource/polar/issues/2808)
+* [#2665 Subscription Benefit: Book time](https://github.com/polarsource/polar/issues/2665)
+* [#2832 Pages: Update profile from GitHub default](https://github.com/polarsource/polar/issues/2832)
 
 <!-- POLAR-END id=jlaerbca -->
 
