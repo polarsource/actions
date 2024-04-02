@@ -3,6 +3,7 @@ import html
 import string
 import sys
 import urllib.request
+import urllib.error
 import urllib.parse
 import json
 import random
@@ -11,6 +12,11 @@ import os
 
 POLAR_API_BASE = os.getenv("POLAR_API_BASE", "https://api.polar.sh")
 POLAR_API_TOKEN = os.getenv("POLAR_API_TOKEN", None)
+
+COMMON_HEADERS = {
+    "Accept": "application/json",
+    "User-Agent": "Polar GitHub Action",
+}
 
 
 def polarify() -> None:
@@ -127,9 +133,14 @@ class Organization:
 
 def api_organization_lookup(org: str) -> Organization:
     params = {"platform": "github", "organization_name": org}
-    contents = urllib.request.urlopen(
-        f"{POLAR_API_BASE}/api/v1/organizations/lookup?{urllib.parse.urlencode(params)}"
+    request = urllib.request.Request(
+        f"{POLAR_API_BASE}/api/v1/organizations/lookup?{urllib.parse.urlencode(params)}",
+        headers={
+            "Authorization": f"Bearer {POLAR_API_TOKEN}",
+            **COMMON_HEADERS,
+        },
     )
+    contents = urllib.request.urlopen(request)
     data = json.load(contents)
     return Organization(**data)
 
@@ -207,7 +218,10 @@ def api_pledges_search(org: str) -> ListPledges:
     params = {"platform": "github", "organization_name": org}
     request = urllib.request.Request(
         url=f"{POLAR_API_BASE}/api/v1/pledges/search?{urllib.parse.urlencode(params)}",
-        headers={"Authorization": f"Bearer {POLAR_API_TOKEN}"},
+        headers={
+            "Authorization": f"Bearer {POLAR_API_TOKEN}",
+            **COMMON_HEADERS,
+        },
     )
     contents = urllib.request.urlopen(request)
     data = json.load(contents)
@@ -232,9 +246,14 @@ def polar_issues(
     if have_badge is not None:
         params["have_badge"] = have_badge
 
-    contents = urllib.request.urlopen(
-        f"{POLAR_API_BASE}/api/v1/issues/search?{urllib.parse.urlencode(params)}"
+    request = urllib.request.Request(
+        f"{POLAR_API_BASE}/api/v1/issues/search?{urllib.parse.urlencode(params)}",
+        headers={
+            **COMMON_HEADERS,
+        },
     )
+
+    contents = urllib.request.urlopen(request)
     data = json.load(contents)
 
     list_items = []
@@ -321,10 +340,13 @@ def polar_ads(subscription_benefit_id: str, height: int, width: int) -> str:
 
     request = urllib.request.Request(
         f"{POLAR_API_BASE}/api/v1/advertisements/campaigns/search?{urllib.parse.urlencode(params)}",
-        headers={"Authorization": f"Bearer {POLAR_API_TOKEN}"},
+        headers={
+            "Authorization": f"Bearer {POLAR_API_TOKEN}",
+            **COMMON_HEADERS,
+        },
     )
-    contents = urllib.request.urlopen(request)
 
+    contents = urllib.request.urlopen(request)
     data = json.load(contents)
 
     ads = []
