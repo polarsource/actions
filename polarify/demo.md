@@ -4,16 +4,16 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#3079 Posts: Save draft on clicking `Publish`](https://github.com/polarsource/polar/issues/3079)
-* [#3073 Scoped access tokens for Teams and Organizations](https://github.com/polarsource/polar/issues/3073)
-* [#2641 Polar Webhooks](https://github.com/polarsource/polar/issues/2641)
-* [#2832 Pages: Update profile from GitHub default](https://github.com/polarsource/polar/issues/2832)
+* [#2833 Creator onboarding via public page](https://github.com/polarsource/polar/issues/2833)
+* [#2666 Teams Refactor & Launch](https://github.com/polarsource/polar/issues/2666)
+* [#2629 GitHub: Create discussion from post](https://github.com/polarsource/polar/issues/2629)
 * [#2828 Projects: Show & customize posts](https://github.com/polarsource/polar/issues/2828)
-* [#2172 404 page requires JS](https://github.com/polarsource/polar/issues/2172)
-* [#3018 Subscription: Downgrade to `Free` upon overdue payment](https://github.com/polarsource/polar/issues/3018)
-* [#3020 Subscription Benefit: License Key](https://github.com/polarsource/polar/issues/3020)
-* [#3005 Discord Webhook: New subscribers](https://github.com/polarsource/polar/issues/3005)
-* [#2818 Pages: Show paid subscribers separately](https://github.com/polarsource/polar/issues/2818)
+* [#2648 Subscription Rewards](https://github.com/polarsource/polar/issues/2648)
+* [#2637 Campaigns / Sponsorware](https://github.com/polarsource/polar/issues/2637)
+* [#2827 Project: Highlighted tiers & subscription CTA](https://github.com/polarsource/polar/issues/2827)
+* [#2675 Update onboarding email](https://github.com/polarsource/polar/issues/2675)
+* [#2792 Onboarding: Add funding.yaml & GitHub embeds](https://github.com/polarsource/polar/issues/2792)
+* [#2794 Video: Welcome to Polar - Get started (1-2 min)](https://github.com/polarsource/polar/issues/2794)
 
 <!-- POLAR-END id=jlaerbca -->
 
