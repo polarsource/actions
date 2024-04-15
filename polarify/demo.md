@@ -11,9 +11,9 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 * [#2828 Projects: Show & customize posts](https://github.com/polarsource/polar/issues/2828)
 * [#2629 GitHub: Create discussion from post](https://github.com/polarsource/polar/issues/2629)
 * [#2637 Campaigns / Sponsorware](https://github.com/polarsource/polar/issues/2637)
-* [#2827 Project: Highlighted tiers & subscription CTA](https://github.com/polarsource/polar/issues/2827)
 * [#2648 Subscription Rewards](https://github.com/polarsource/polar/issues/2648)
-* [#2675 Update onboarding email](https://github.com/polarsource/polar/issues/2675)
+* [#2827 Project: Highlighted tiers & subscription CTA](https://github.com/polarsource/polar/issues/2827)
+* [#2792 Onboarding: Add funding.yaml & GitHub embeds](https://github.com/polarsource/polar/issues/2792)
 
 <!-- POLAR-END id=jlaerbca -->
 
