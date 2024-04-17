@@ -140,7 +140,14 @@ def api_organization_lookup(org: str) -> Organization:
             **COMMON_HEADERS,
         },
     )
-    contents = urllib.request.urlopen(request)
+
+    try:
+        contents = urllib.request.urlopen(request)
+    except urllib.error.HTTPError as e:
+        error = e.read().decode()
+        print("API Error: " + error)
+        raise e
+
     data = json.load(contents)
     return Organization(**data)
 
@@ -223,7 +230,14 @@ def api_pledges_search(org: str) -> ListPledges:
             **COMMON_HEADERS,
         },
     )
-    contents = urllib.request.urlopen(request)
+
+    try:
+        contents = urllib.request.urlopen(request)
+    except urllib.error.HTTPError as e:
+        error = e.read().decode()
+        print("API Error: " + error)
+        raise e
+
     data = json.load(contents)
     return ListPledges.init(data)
 
@@ -253,7 +267,13 @@ def polar_issues(
         },
     )
 
-    contents = urllib.request.urlopen(request)
+    try:
+        contents = urllib.request.urlopen(request)
+    except urllib.error.HTTPError as e:
+        error = e.read().decode()
+        print("API Error: " + error)
+        raise e
+
     data = json.load(contents)
 
     list_items = []
@@ -336,17 +356,27 @@ def polar_backers_avatars(org: str) -> str:
 
 
 def polar_ads(subscription_benefit_id: str, height: int, width: int) -> str:
-    params = {"subscription_benefit_id": subscription_benefit_id}
+    params = {"benefit_id": subscription_benefit_id}
+
+    url = f"{POLAR_API_BASE}/api/v1/advertisements/campaigns/search?{urllib.parse.urlencode(params)}"
+
+    print(url)
 
     request = urllib.request.Request(
-        f"{POLAR_API_BASE}/api/v1/advertisements/campaigns/search?{urllib.parse.urlencode(params)}",
+        url,
         headers={
             "Authorization": f"Bearer {POLAR_API_TOKEN}",
             **COMMON_HEADERS,
         },
     )
 
-    contents = urllib.request.urlopen(request)
+    try:
+        contents = urllib.request.urlopen(request)
+    except urllib.error.HTTPError as e:
+        error = e.read().decode()
+        print("API Error: " + error)
+        raise e
+
     data = json.load(contents)
 
     ads = []
