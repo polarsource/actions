@@ -85,7 +85,8 @@ def polarify_file(path: str) -> None:
             rendered = polar_backers_avatars(org=args["org"])
         elif args["type"] == "ads":
             rendered = polar_ads(
-                subscription_benefit_id=args["subscription_benefit_id"],
+                benefit_id=args["subscription_benefit_id"]
+                or args["benefit_id"],  # backwards compatible
                 height=int(args["height"]),
                 width=int(args["width"]),
             )
@@ -355,8 +356,8 @@ def polar_backers_avatars(org: str) -> str:
     return res
 
 
-def polar_ads(subscription_benefit_id: str, height: int, width: int) -> str:
-    params = {"benefit_id": subscription_benefit_id}
+def polar_ads(benefit_id: str, height: int, width: int) -> str:
+    params = {"benefit_id": benefit_id}
 
     url = f"{POLAR_API_BASE}/api/v1/advertisements/campaigns/search?{urllib.parse.urlencode(params)}"
 
