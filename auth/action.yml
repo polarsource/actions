@@ -38,6 +38,4 @@ runs:
         # Output it
         echo "token=$(echo $access_token)" >> $GITHUB_OUTPUT
       env:
-        ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ inputs.actions_id_token_request_token }}
-        ACTIONS_ID_TOKEN_REQUEST_URL: ${{ inputs.actions_id_token_request_url }}
         SCOPE: ${{ inputs.scope }}
