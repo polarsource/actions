@@ -1,0 +1,39 @@
+name: 'Authenticate to Polar'
+description: 'Polar Polarify'
+
+branding:
+  icon: lock
+  color: blue
+
+inputs:
+  actions_id_token_request_url:
+    description: "The URL for GitHub's OIDC provider"
+    required: true
+  actions_id_token_request_token:
+    description: "Bearer token for the request to the OIDC provider."
+    required: true
+  scope:
+    description: "List of scopes to request for the Polar access token."
+    default: "openid"
+    required: true
+
+outputs:
+  token:
+    description: "A Polar access token."
+    value: ${{ steps.mint-token.outputs.token }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Mint a Polar access token
+      id: mint-token
+      shell: bash
+      run: |
+        # Retrieve the ambient OIDC token
+        resp=$(curl -H "Authorization: bearer ${{ inputs.actions_id_token_request_token }}" ${{ inputs.actions_id_token_request_url }}&audience=polar")
+        oidc_token=$(jq -r '.value' <<< "${resp}")
+        # Mint the token
+        resp=$(curl -XPOST -d "grant_type=github_oidc_id_token&id_token=${oidc_token}&scope=${{ inputs.scope }}" https://api.polar.sh/api/v1/oauth2/token)
+        access_token=$(jq -r '.access_token' <<< "${resp}")
+        # Output it
+        echo "token=$(echo $access_token)" >> $GITHUB_OUTPUT
