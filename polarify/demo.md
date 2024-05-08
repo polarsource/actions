@@ -4,7 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
-* [#3254 Stuck on: `Connecting your amazing repositories...`](https://github.com/polarsource/polar/issues/3254)
+* [#3275 Issue Funding: Don't send funding notification/email if the owner makes the pledge](https://github.com/polarsource/polar/issues/3275)
 * [#3273 Funding: Amount resets on changing payment method](https://github.com/polarsource/polar/issues/3273)
 * [#3264 Self-billing invoice](https://github.com/polarsource/polar/issues/3264)
 * [#2818 Pages: Show paid subscribers separately](https://github.com/polarsource/polar/issues/2818)
