@@ -4,8 +4,8 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#3295 Issue Funding: Redirected to `/feed` post pledge vs. funding page](https://github.com/polarsource/polar/issues/3295)
 * [#2642 OAuth](https://github.com/polarsource/polar/issues/2642)
-* [#3284 Developer Settings](https://github.com/polarsource/polar/issues/3284)
 * [#3245 Incredible API docs](https://github.com/polarsource/polar/issues/3245)
 * [#2638 Products (Pay once)](https://github.com/polarsource/polar/issues/2638)
 * [#2636 Hosted downloads](https://github.com/polarsource/polar/issues/2636)
