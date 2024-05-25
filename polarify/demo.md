@@ -4,6 +4,7 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 
 <!-- POLAR type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently_updated -->
 
+* [#3334 Users can subscribe multiple times if they are logged out](https://github.com/polarsource/polar/issues/3334)
 * [#2636 File downloads](https://github.com/polarsource/polar/issues/2636)
 * [#3325 Subscribe-button present on creators without subscription tiers enabled](https://github.com/polarsource/polar/issues/3325)
 * [#3322 Donation amount summary per author/organization](https://github.com/polarsource/polar/issues/3322)
@@ -13,7 +14,6 @@ Demo: `type=issues id=jlaerbca org=polarsource repo=polar limit=10 sort=recently
 * [#1962 Subscriptions: offer to downgrade to "free" when unsubscribing from a paid tier](https://github.com/polarsource/polar/issues/1962)
 * [#3306 Accounting: Update queries to work with `subscriptions` to `products` migration](https://github.com/polarsource/polar/issues/3306)
 * [#3300 Link to subscriber page from subscription stats on overview](https://github.com/polarsource/polar/issues/3300)
-* [#3242 🎯 North Star: All-in-one funding & monetization platform](https://github.com/polarsource/polar/issues/3242)
 
 <!-- POLAR-END id=jlaerbca -->
 
