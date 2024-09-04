@@ -1,5 +1,5 @@
 name: 'Authenticate to Polar'
-description: 'Polar Polarify'
+description: 'Generate a short-lived Polar access token using a GitHub OpenID Connect token. Make sure your repository is linked on your Polar organization.'
 
 branding:
   icon: lock
@@ -7,7 +7,7 @@ branding:
 
 inputs:
   scope:
-    description: "List of scopes to request for the Polar access token."
+    description: "Space-separated list of scopes to request for the Polar access token."
     default: "openid"
     required: true
 
