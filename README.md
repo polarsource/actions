@@ -1,12 +1,10 @@
-
-
 # Polar GitHub Actions
 
 <div align="center">
 
 <a href="https://polar.sh">Website</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-<a href="https://polar.sh/faq">FAQ</a>
+<a href="https:/docs.polar.sh">Documentation</a>
 
 
 <p align="center">
@@ -24,146 +22,164 @@
 </p>
 </div>
 
+Integrate Polar into your GitHub Actions workflows easily thanks to our ready-to-use actions.
 
-The Polar GitHub Action integrates data from [Polar](https://polar.sh/) in statically generated markdown or HTML websites.
+## `polarsource/actions/auth`
 
-🧰 Render static HTML / Markdown from your dynamic Polar data
-🔄 Automatic updates via GitHub Actions (Pull Requests or direct push)
+This action allows you to generate a temporary Polar API token for your workflow, **without the need to generate a long-lived personal access token**.
 
-Example use cases:
+### 1. Link your repository on Polar
 
-💡 Showcase backers by adding their avatars to your repositories README
-💡 Add links to top repositories that are in need of funding to your documentation website
+You'll need to link the repository running the workflow to your Polar organization, as described [here](https://docs.polar.sh/github/install).
 
-## Usage
+### 2. Add the action to your workflow
 
+Your workflow will need the `id-token` permission:
 
-1. Add a HTML comment like this one to your site
+```yaml
+permissions:
+  id-token: write
+```
+
+You can then use the action like this:
+
+```yaml
+- uses: polarsource/actions/auth@v1
+  id: polar
+  with:
+    scope: 'openid benefits:read products:read'
+```
+
+The only required parameter, `scope`, is a space-separated list of scopes you want to grant to the resulting token. The token is available as an output of the action. For example, you can use it like this:
+
+```yaml
+- name: 'Check Polar access'
+  run: |
+    resp=$(curl -XGET -H "Authorization: Bearer ${{ steps.polar.outputs.token }}" https://api.polar.sh/api/v1/oauth2/userinfo)
+    echo $resp
+```
+
+> [!NOTE]
+> The generated token is an [organization access token](/docs/api/authentication#user-vs-organization-access-tokens).
+
+> [!TIP]
+> **How does it work?**
+>
+> We use [GitHub OpenID Connect](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect) mechanism to authenticate the request truly comes for your repository's workflow. Since you've linked the repository on Polar, we can trust the action comes from you and deliver a short-lived token.
+
+### Scenarios
+
+**Tag an issue as `priority` if the author has access to a specific benefit**
+
+```yaml
+name: Priority Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+
+env:
+  POLAR_BENEFIT_ID: 00000000-0000-0000-0000-000000000000
+
+jobs:
+  check-priority:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: polarsource/actions/auth@v1
+        id: polar
+        with:
+          scope: 'benefits:read'
+
+      - name: 'Check if author has access to priority answers'
+        id: check-benefit
+        run: |
+          resp=$(curl -XGET -H "Authorization: Bearer ${{ steps.polar.outputs.token }}" https://api.polar.sh/api/v1/benefits/${{ env.POLAR_BENEFIT_ID }}/grants?is_granted=true&github_user_id=${{ github.event.issue.user.id }})
+          count=$(($(jq -r '.pagination | .total_count' <<< "${resp}")))
+          echo "count=$(echo $count)" >> $GITHUB_OUTPUT
+
+      - name: 'Add the priority label'
+        if: steps.check-benefit.outputs.count > 0
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: priority
+```
+
+## `polarsource/actions/ads`
+
+This action allows you to automatically synchronize the ads created by your customers as part of an [Ad benefit](https://docs.polar.sh/benefits/ads) in a Markdown or HTML page.
+
+### 1. Add the magic comment to your document
 
 ```html
-<!-- POLAR type=issues org=polarsource repo=polar limit=10 sort=recently_updated -->
+<!-- POLAR type=ads benefit_id=00000000-0000-0000-0000-000000000000 width=100 height=100 -->
 ```
 
-2. Use the `polarify` GitHub action to [convert](https://github.com/polarsource/actions/commit/5391b344ce3e0106e6dd24fb6c90fdc0e91d8c10) and [update](https://github.com/polarsource/actions/commit/f2c3d98b39b716c84437d4d39995c518c7861514) your website with real Polar data.
+`benefit_id` is the ID of your ad benefit. You can find it in your dashboard, on the `Benefits` page.
 
-Add the following to your GitHub Actions workflow. ([Example](https://github.com/polarsource/actions/blob/main/.github/workflows/self_check_polarify.yaml))
+### 2. Add the action to your workflow
 
 ```yaml
-- name: Polarify
-  uses: polarsource/actions/polarify@main
+- name: Sync Polar ads
+  uses: polarsource/actions/ads@main
   with:
-    # Update this glob pattern to match the files that you want to update
-    path: "**/*.md"
+    path: README.md
+    token: ${{ secrets.POLAR_ACCESS_TOKEN }}
 ```
 
-Use the polarify in your website build pipeline, or run it regularly and auto-commit the updated data to your website with the [`stefanzweifel/git-auto-commit-action@v4`](https://github.com/stefanzweifel/git-auto-commit-action) action.
+`path` is the path of the file you want to update. Glob patterns are supported. `token` is a valid Polar access token, which you can set in your repository secrets or generate using our [auth action](#polarsourceactionsauth).
 
-## "types"
+### Scenarios
 
-* `issues` - [[example](./polarify/demo.md)]  - A list of links to the top issues in a org or repository. Options: `org`, `repo`, `limit` (optional), `sort` (optional), `have_pledge` (optional), `have_badge` (optional)
-* `backers-avatars` - [[example](./polarify/demo-backers-avatars.md)] - Avatar images and links to GitHub profiles, sorted by backed amount. Options: `org`. Requires `POLAR_API_TOKEN`.
-
-## GitHub Actions Examples
-
-<details>
-  <summary><strong>👉 Example with Pull Requests</strong></summary>
-
+**Update ads in README.md on push and every day**
 
 ```yaml
-name: Polarify
+name: Ads sync example
 
 on:
-  # Run after every push
   push:
     branches: ["main"]
 
-  # Daily at 07:00
   schedule:
     - cron: "0 7 * * *"
 
 jobs:
-  polarify:
-    name: "Polarify"
-    timeout-minutes: 15
-    runs-on: ubuntu-22.04
+  sync:
+    runs-on: ubuntu-latest
 
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
-      contents: write
-      # Depending on your use-case, you might need to check "Allow GitHub Actions to create and approve pull requests" in the repositories "Actions > General" settings.
-      pull-requests: write
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Polarify
-        uses: polarsource/actions/polarify@main
-        with:
-          # Update this glob pattern to match the files that you want to update
-          path: "**/*.md"
-        # This is needed if you're accessing private data in the action (type=pledgers), if not, you can skip it!
-        env:
-          POLAR_API_TOKEN: ${{ secrets.POLAR_API_TOKEN }}
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          title: "Updated data from Polar"
-          commit-message: "polar: updated data from Polar"
-          body: "Automatic changes from Polar and the Polarify GitHub Action"
-          branch: "polarify"
-          delete-branch: true # delete the branch after merging
-```
-
-</details>
-
-<details>
-  <summary><strong>👉 Example with direct push to main</strong></summary>
-
-```yaml
-name: Polarify
-
-on:
-  # Run after every push
-  push:
-    branches: ["main"]
-
-  # Daily at 07:00
-  schedule:
-    - cron: "0 7 * * *"
-
-jobs:
-  polarify:
-    name: "Polarify"
-    timeout-minutes: 15
-    runs-on: ubuntu-22.04
-
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
       contents: write
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Polarify
-        uses: polarsource/actions/polarify@main
+      - uses: polarsource/actions/auth@v1
+        id: polar
         with:
-          # Update this glob pattern to match the files that you want to update
-          path: "**/*.md"
-        # This is needed if you're accessing private data in the action (type=pledgers), if not, you can skip it!
-        env:
-          POLAR_API_TOKEN: ${{ secrets.POLAR_API_TOKEN }}
+          scope: 'openid'
+
+      - name: Sync Polar ads
+        uses: polarsource/actions/ads@v1
+        with:
+          path: ads/demo.md
+          token: ${{ steps.polar.outputs.token }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update polar comments
+          commit_message: Update Polar ads
 ```
-</details>
 
-## Example
+### Demo
 
-* [Example Action](https://github.com/polarsource/actions/blob/main/.github/workflows/self_check_polarify.yaml)
-* [Example Blog Post](https://github.com/polarsource/actions/blob/main/polarify/demo.md?plain=1)
-
+<!-- POLAR type=ads benefit_id=c43080e5-c99f-43d2-b72c-e25ac374dd2b width=100 height=100 -->

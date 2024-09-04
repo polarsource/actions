@@ -1,13 +1,9 @@
 name: Ads sync example
 
-# Example action of how to use the polarsource/actions/polarify action and auto-commiting the results to the repository.
-
 on:
-  # Run after every push
   push:
     branches: ["main"]
 
-  # Daily at 07:00
   schedule:
     - cron: "0 7 * * *"
 
@@ -16,18 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
       contents: write
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
 
+      - uses: polarsource/actions/auth@main
+        id: polar
+        with:
+          scope: 'openid'
+
       - name: Sync Polar ads
         uses: polarsource/actions/ads@main
         with:
           path: ads/demo.md
-          token: ${{ secrets.POLAR_API_TOKEN }}
+          token: ${{ steps.polar.outputs.token }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
