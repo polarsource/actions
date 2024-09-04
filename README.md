@@ -180,7 +180,3 @@ jobs:
         with:
           commit_message: Update Polar ads
 ```
-
-### Demo
-
-<!-- POLAR type=ads benefit_id=c43080e5-c99f-43d2-b72c-e25ac374dd2b width=100 height=100 -->

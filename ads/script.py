@@ -16,6 +16,7 @@ from polar_sdk.models import AdvertisementsListResponse
 
 
 def sync_file(file: io.TextIOWrapper, client: Polar) -> None:
+    print("Syncing file: ", file.name)
     contents = file.read()
 
     if "<!-- POLAR" not in contents:
@@ -153,6 +154,7 @@ if __name__ == "__main__":
         nargs="+",
         help="Paths to the files to synchronize",
     )
+
 
     env_token = os.environ.get("POLAR_API_TOKEN")
     parser.add_argument(
