@@ -173,7 +173,7 @@ jobs:
       - name: Sync Polar ads
         uses: polarsource/actions/ads@v1
         with:
-          path: ads/demo.md
+          path: README.md
           token: ${{ steps.polar.outputs.token }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
