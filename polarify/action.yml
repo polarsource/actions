@@ -24,5 +24,5 @@ runs:
     - name: Run
       run: |
         pip install uv
-        uv run ${{ github.action_path }}/../ads/polarify.py ${{ inputs.path }}
+        uv run ${{ github.action_path }}/../ads/script.py ${{ inputs.path }}
       shell: bash
