@@ -55,10 +55,13 @@ def sync_file(file: io.TextIOWrapper, client: Polar) -> None:
         rendered = ""
 
         if args["type"] == "ads":
+            benefit_id = args.get("subscription_benefit_id") or args.get("benefit_id")
+            if benefit_id is None:
+                print(f"Invalid Polar comment, missing benefit_id in: {comment}")
+                continue
             rendered = polar_ads(
                 client,
-                benefit_id=args["subscription_benefit_id"]
-                or args["benefit_id"],  # backwards compatible
+                benefit_id=benefit_id,
                 height=int(args["height"]),
                 width=int(args["width"]),
             )
