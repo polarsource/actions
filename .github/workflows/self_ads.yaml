@@ -1,4 +1,4 @@
-name: Polarify
+name: Ads sync example
 
 # Example action of how to use the polarsource/actions/polarify action and auto-commiting the results to the repository.
 
@@ -12,10 +12,8 @@ on:
     - cron: "0 7 * * *"
 
 jobs:
-  polarify:
-    name: "Self-Polarify"
-    timeout-minutes: 15
-    runs-on: ubuntu-22.04
+  sync:
+    runs-on: ubuntu-latest
 
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
@@ -23,10 +21,10 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Polarify
-        uses: polarsource/actions/polarify@main
+      - name: Sync Polar ads
+        uses: polarsource/actions/ads@main
         with:
           path: "**/demo**.md"
         env:
@@ -34,4 +32,4 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update polar comments
+          commit_message: Update Polar ads

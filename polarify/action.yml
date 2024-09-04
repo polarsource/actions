@@ -1,5 +1,5 @@
 name: 'Polarify'
-description: 'Polar Polarify'
+description: 'Legacy Polar Action — Please migrate to polarsource/actions/ads'
 
 branding:
   icon: dollar-sign
@@ -14,10 +14,15 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - shell: bash
+      run: |
+        echo "::warning title=Deprecated action::This Polar action is deprecated, please migrate to polarsource/actions/ads"
     - name: Install Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     - name: Run
-      run: python ${{ github.action_path }}/polarify.py ${{ inputs.path }}
+      run: |
+        pip install uv
+        uv run ${{ github.action_path }}/../ads/polarify.py ${{ inputs.path }}
       shell: bash

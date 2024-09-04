@@ -1,0 +1,28 @@
+name: 'Sync Polar ads'
+description: 'Synchronize your customers ads in your repository'
+
+branding:
+  icon: dollar-sign
+  color: blue
+
+inputs:
+  token:
+    description: 'Polar access token'
+    required: true
+  path:
+    description: 'Glob pattern of files fo run the action on'
+    default: "**/*.md"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Run
+      run: |
+        pip install uv
+        uv run ${{ github.action_path }}/../ads/polarify.py --token ${{ inputs.token }} ${{ inputs.path }}
+      shell: bash

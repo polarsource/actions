@@ -3,7 +3,7 @@
 # Polar GitHub Actions
 
 <div align="center">
-  
+
 <a href="https://polar.sh">Website</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://polar.sh/faq">FAQ</a>
@@ -27,13 +27,13 @@
 
 The Polar GitHub Action integrates data from [Polar](https://polar.sh/) in statically generated markdown or HTML websites.
 
-🧰 Render static HTML / Markdown from your dynamic Polar data  
-🔄 Automatic updates via GitHub Actions (Pull Requests or direct push)  
-  
+🧰 Render static HTML / Markdown from your dynamic Polar data
+🔄 Automatic updates via GitHub Actions (Pull Requests or direct push)
+
 Example use cases:
-  
-💡 Showcase backers by adding their avatars to your repositories README  
-💡 Add links to top repositories that are in need of funding to your documentation website  
+
+💡 Showcase backers by adding their avatars to your repositories README
+💡 Add links to top repositories that are in need of funding to your documentation website
 
 ## Usage
 
